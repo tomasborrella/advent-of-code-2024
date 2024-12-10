@@ -1,18 +1,42 @@
+import kotlin.math.abs
+
+data class LocationIds(val left: List<Int>, val right: List<Int>)
+
+fun getData(input: List<String>): LocationIds {
+    val (left, right) = input.map { line ->
+        line.split("   ").let { parts -> parts[0].toInt() to parts[1].toInt() } }
+        .unzip()
+    return LocationIds(left, right)
+}
+
+
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.size
+        val locationIds: LocationIds = getData(input)
+
+        var solution = 0
+        locationIds.left.sorted().zip(locationIds.right.sorted()).forEach {pair ->
+            solution += abs(pair.component1() - pair.component2())
+        }
+        return solution
     }
 
     fun part2(input: List<String>): Int {
-        return input.size
-    }
+        val locationIds: LocationIds = getData(input)
 
-    // Test if implementation meets criteria from the description, like:
-    check(part1(listOf("test_input")) == 1)
+        val rightCountMap = locationIds.right.groupingBy { it }.eachCount()
+        var solution = 0
+        locationIds.left.forEach { element ->
+            val multiplier = rightCountMap.getOrDefault(element, 0)
+            solution += element * multiplier
+        }
+        return solution
+    }
 
     // Or read a large test input from the `src/Day01_test.txt` file:
     val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
+    check(part1(testInput) == 11)
+    check(part2(testInput) == 31)
 
     // Read the input from the `src/Day01.txt` file.
     val input = readInput("Day01")
