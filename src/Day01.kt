@@ -2,7 +2,7 @@ import kotlin.math.abs
 
 data class LocationIds(val left: List<Int>, val right: List<Int>)
 
-fun getData(input: List<String>): LocationIds {
+fun prepareDataDay01(input: List<String>): LocationIds {
     val (left, right) = input.map { line ->
         line.split("   ").let { parts -> parts[0].toInt() to parts[1].toInt() } }
         .unzip()
@@ -12,7 +12,7 @@ fun getData(input: List<String>): LocationIds {
 
 fun main() {
     fun part1(input: List<String>): Int {
-        val locationIds: LocationIds = getData(input)
+        val locationIds: LocationIds = prepareDataDay01(input)
 
         var solution = 0
         locationIds.left.sorted().zip(locationIds.right.sorted()).forEach {pair ->
@@ -22,7 +22,7 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        val locationIds: LocationIds = getData(input)
+        val locationIds: LocationIds = prepareDataDay01(input)
 
         val rightCountMap = locationIds.right.groupingBy { it }.eachCount()
         var solution = 0
