@@ -1,13 +1,7 @@
-fun prepareData(input: List<String>): List<CharArray>{
+fun prepareDataDay04(input: List<String>): List<CharArray>{
     return input.map { line ->
         line.toCharArray()
     }
-}
-
-fun validIndexes(data: List<CharArray>, rowIndex: Int, colIndex: Int): Boolean {
-    val maxRowIndex = data.size - 1
-    val maxColIndex = data[0].size - 1
-    return rowIndex >= 0 && colIndex >= 0 && rowIndex <= maxRowIndex && colIndex <= maxColIndex
 }
 
 fun checkXMASFromX(data: List<CharArray>, xRowIndex: Int, xColIndex: Int, rowModifier: Int, colModifier: Int): Boolean {
@@ -45,7 +39,7 @@ fun checkRightMASFromA(data: List<CharArray>, aRowIndex: Int, aColIndex: Int): B
 
 fun main() {
     fun part1(input: List<String>): Int {
-        val data = prepareData(input)
+        val data = prepareDataDay04(input)
         var count = 0
         data.forEachIndexed { rowIndex, row ->
             row.forEachIndexed { colIndex, value ->
@@ -65,7 +59,7 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        val data = prepareData(input)
+        val data = prepareDataDay04(input)
         var count = 0
         data.forEachIndexed { rowIndex, row ->
             row.forEachIndexed { colIndex, value ->
