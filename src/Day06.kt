@@ -2,12 +2,6 @@ data class Coordinates(val row: Int, val col: Int)
 
 const val POSITIONS_TO_CHECK = 10
 
-fun prepareDataDay06(input: List<String>): List<CharArray>{
-    return input.map { line ->
-        line.toCharArray()
-    }
-}
-
 fun indexOfSubList(list: List<Coordinates>, subList: List<Coordinates>): Int {
     return (0..list.size - subList.size).firstOrNull { index ->
         list.subList(index, index + subList.size) == subList
@@ -126,21 +120,21 @@ fun completeAMapWithoutAddedObstacles(originalMap: List<CharArray>): List<CharAr
 
 fun main() {
     fun part1(input: List<String>): Int {
-        val initialMap = prepareDataDay06(input)
+        val initialMap = readMapInput(input)
         val map = completeAMapWithoutAddedObstacles(initialMap)
         return getXCoordinates(map).size
     }
 
     // TODO: Improve performance: it takes about 6 minutes to run in my M1 PRO computer
     fun part2(input: List<String>): Int {
-        val initialMap = prepareDataDay06(input)
+        val initialMap = readMapInput(input)
         var map: MutableList<CharArray> = initialMap.toMutableList()
         var loopCounter = 0
         val allObstacleOptions = getObstacleOptionsBasedOnPossiblePositions(map)
         println("allObstacleOptions: ${allObstacleOptions.size}")
         allObstacleOptions.forEachIndexed { index, option ->
             println("index: $index") // Just to see the progress of the execution
-            map = prepareDataDay06(input).toMutableList()
+            map = readMapInput(input).toMutableList()
             map[option.row][option.col] = 'O'
             var guardPosition = getGuardCoordinates(map)
             val allPositions: MutableList<Coordinates> = mutableListOf()

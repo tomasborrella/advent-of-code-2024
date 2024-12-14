@@ -1,9 +1,3 @@
-fun prepareDataDay04(input: List<String>): List<CharArray>{
-    return input.map { line ->
-        line.toCharArray()
-    }
-}
-
 fun checkXMASFromX(data: List<CharArray>, xRowIndex: Int, xColIndex: Int, rowModifier: Int, colModifier: Int): Boolean {
     var newRowIndex = xRowIndex + rowModifier
     var newColIndex = xColIndex + colModifier
@@ -39,7 +33,7 @@ fun checkRightMASFromA(data: List<CharArray>, aRowIndex: Int, aColIndex: Int): B
 
 fun main() {
     fun part1(input: List<String>): Int {
-        val data = prepareDataDay04(input)
+        val data = readMapInput(input)
         var count = 0
         data.forEachIndexed { rowIndex, row ->
             row.forEachIndexed { colIndex, value ->
@@ -59,7 +53,7 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        val data = prepareDataDay04(input)
+        val data = readMapInput(input)
         var count = 0
         data.forEachIndexed { rowIndex, row ->
             row.forEachIndexed { colIndex, value ->
