@@ -54,7 +54,7 @@ fun newDirection(direction: Char): Char {
 }
 
 fun moveGuard(direction: Char, currentRow: Int, currentCol: Int, newRow: Int, newCol: Int, map: List<CharArray>) {
-    if (validIndexes(map, newRow, newCol)){
+    if (validIndexesListCharArray(map, newRow, newCol)){
         if (map[newRow][newCol] != '#') {
             map[currentRow][currentCol] = 'X'
             map[newRow][newCol] = direction
@@ -71,7 +71,7 @@ fun moveGuard(direction: Char, currentRow: Int, currentCol: Int, newRow: Int, ne
 // TODO: moveGuard and moveGuardPart2 should be combined in an only function
 fun moveGuardPart2(direction: Char, currentRow: Int, currentCol: Int, newRow: Int, newCol: Int, map: List<CharArray>,
                    allPositions: MutableList<Coordinates>) {
-    if (validIndexes(map, newRow, newCol)){
+    if (validIndexesListCharArray(map, newRow, newCol)){
         if (map[newRow][newCol] != '#' && map[newRow][newCol] != 'O') {
             map[currentRow][currentCol] = 'X'
             map[newRow][newCol] = direction

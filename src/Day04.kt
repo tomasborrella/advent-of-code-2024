@@ -1,13 +1,13 @@
 fun checkXMASFromX(data: List<CharArray>, xRowIndex: Int, xColIndex: Int, rowModifier: Int, colModifier: Int): Boolean {
     var newRowIndex = xRowIndex + rowModifier
     var newColIndex = xColIndex + colModifier
-    if (validIndexes(data, newRowIndex, newColIndex) && data[newRowIndex][newColIndex] == 'M'){
+    if (validIndexesListCharArray(data, newRowIndex, newColIndex) && data[newRowIndex][newColIndex] == 'M'){
         newRowIndex += rowModifier
         newColIndex += colModifier
-        if (validIndexes(data, newRowIndex, newColIndex) && data[newRowIndex][newColIndex] == 'A'){
+        if (validIndexesListCharArray(data, newRowIndex, newColIndex) && data[newRowIndex][newColIndex] == 'A'){
             newRowIndex += rowModifier
             newColIndex += colModifier
-            if (validIndexes(data, newRowIndex, newColIndex) && data[newRowIndex][newColIndex] == 'S'){
+            if (validIndexesListCharArray(data, newRowIndex, newColIndex) && data[newRowIndex][newColIndex] == 'S'){
                 return true
             }
         }
@@ -16,19 +16,19 @@ fun checkXMASFromX(data: List<CharArray>, xRowIndex: Int, xColIndex: Int, rowMod
 }
 
 fun checkLeftMASFromA(data: List<CharArray>, aRowIndex: Int, aColIndex: Int): Boolean {
-    return (((validIndexes(data,aRowIndex-1, aColIndex-1) && data[aRowIndex-1][aColIndex-1] == 'M') &&
-            (validIndexes(data,aRowIndex+1, aColIndex+1) && data[aRowIndex+1][aColIndex+1] == 'S'))
+    return (((validIndexesListCharArray(data,aRowIndex-1, aColIndex-1) && data[aRowIndex-1][aColIndex-1] == 'M') &&
+            (validIndexesListCharArray(data,aRowIndex+1, aColIndex+1) && data[aRowIndex+1][aColIndex+1] == 'S'))
             ||
-            ((validIndexes(data,aRowIndex-1, aColIndex-1) && data[aRowIndex-1][aColIndex-1] == 'S') &&
-                    (validIndexes(data,aRowIndex+1, aColIndex+1) && data[aRowIndex+1][aColIndex+1] == 'M')))
+            ((validIndexesListCharArray(data,aRowIndex-1, aColIndex-1) && data[aRowIndex-1][aColIndex-1] == 'S') &&
+                    (validIndexesListCharArray(data,aRowIndex+1, aColIndex+1) && data[aRowIndex+1][aColIndex+1] == 'M')))
 }
 
 fun checkRightMASFromA(data: List<CharArray>, aRowIndex: Int, aColIndex: Int): Boolean {
-    return (((validIndexes(data,aRowIndex-1, aColIndex+1) && data[aRowIndex-1][aColIndex+1] == 'M') &&
-            (validIndexes(data,aRowIndex+1, aColIndex-1) && data[aRowIndex+1][aColIndex-1] == 'S'))
+    return (((validIndexesListCharArray(data,aRowIndex-1, aColIndex+1) && data[aRowIndex-1][aColIndex+1] == 'M') &&
+            (validIndexesListCharArray(data,aRowIndex+1, aColIndex-1) && data[aRowIndex+1][aColIndex-1] == 'S'))
             ||
-            ((validIndexes(data,aRowIndex-1, aColIndex+1) && data[aRowIndex-1][aColIndex+1] == 'S') &&
-                    (validIndexes(data,aRowIndex+1, aColIndex-1) && data[aRowIndex+1][aColIndex-1] == 'M')))
+            ((validIndexesListCharArray(data,aRowIndex-1, aColIndex+1) && data[aRowIndex-1][aColIndex+1] == 'S') &&
+                    (validIndexesListCharArray(data,aRowIndex+1, aColIndex-1) && data[aRowIndex+1][aColIndex-1] == 'M')))
 }
 
 fun main() {

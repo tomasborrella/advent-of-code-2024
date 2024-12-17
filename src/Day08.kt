@@ -1,5 +1,3 @@
-data class Point(val x: Int, val y: Int)
-
 fun getAntennas(map: List<CharArray>): MutableMap<Char, MutableList<Point>> {
     val antennas: MutableMap<Char, MutableList<Point>> = mutableMapOf()
     map.forEachIndexed { x, row ->
