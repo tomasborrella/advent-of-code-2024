@@ -5,3 +5,4 @@ build
 local.properties
 src/Day[0-9][0-9].txt
 src/*.md
+Playground.kt
